@@ -49,7 +49,7 @@ $proc_params = json_decode($proc_params);
 </div>
 
 <div class="centered-div">
-    <input class="button " type="submit" value="Conferma <?php echo $action?>" name="submit">
+    <input class="button " type="submit" value="Conferma <?php echo $action ?>" name="submit">
 </div>
 
 
