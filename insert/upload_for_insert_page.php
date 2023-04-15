@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="../style.css" media="screen">
 
     <?php
+    $action = "inserimento";
     include "../load.php"
     ?>
 

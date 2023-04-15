@@ -2,16 +2,21 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css" media="screen">
+
+    <script>
+        function restart() {
+            window.location.href = "../select_action_page.php";
+        }
+
+    </script>
 </head>
 <body>
+
 <?php
-
-$proc_params = $_GET['proc_params'];
+include "call_procedure.php";
 $action = $_GET['action'];
-
-$proc_params = json_decode($proc_params);
-
 ?>
+
 
 <div class='table-centered'>
     <table border='1' cellpadding='10'>
@@ -48,10 +53,16 @@ $proc_params = json_decode($proc_params);
 
 </div>
 
-<div class="centered-div">
-    <input class="button " type="submit" value="Conferma <?php echo $action ?>" name="submit">
-</div>
 
+<div class="centered-div">
+
+<form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+      enctype="multipart/form-data">
+
+    <input class="button" type="submit" value="Conferma <?php echo $action ?>" name="submit">
+
+</form>
+</div>
 
 </body>
 </html>
