@@ -58,7 +58,20 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    cursor: pointer;}
+    cursor: pointer;
+}
+
+.button-home {
+    background-color: #eeff94;
+    /*border: red solid 1px;*/
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
 
 .centered-div {
     display: flex;

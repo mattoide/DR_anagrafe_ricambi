@@ -19,11 +19,11 @@
 
 <form class="centered" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
       enctype="multipart/form-data">
-    <div>
-        <button style="background: gray" type="button" value="Ricomincia" onclick="restart()">
-            <span class=reload>&#x21bb;</span>
-        </button>
-    </div>
+<!--    <div>-->
+<!--        <button style="background: gray" type="button" value="Ricomincia" onclick="restart()">-->
+<!--            <span class=reload>&#x21bb;</span>-->
+<!--        </button>-->
+<!--    </div>-->
 
     <h1 class="title">INSERIMENTO</h1>
     <h2 class="title">Carica file</h2>
