@@ -5,7 +5,7 @@
 
     <script>
         function restart() {
-            window.location.href = "../select_action_page.php";
+            window.location.href = "select_action_page.php";
         }
 
     </script>
@@ -59,7 +59,13 @@ $action = $_GET['action'];
 <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
       enctype="multipart/form-data">
 
-    <input class="button" type="submit" value="Conferma <?php echo $action ?>" name="submit">
+
+    <? if (isset($error_message)): ?>
+         <input type="button" class="error button-error" value=" <?php echo $error_message ?>" onclick="restart()"></input>
+    <? else: ?>
+        <input class="button" type="submit" value="Conferma <?php echo $action ?>" name="submit">
+    <? endif; ?>
+
 
 </form>
 </div>
