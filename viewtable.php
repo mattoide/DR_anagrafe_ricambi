@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
+    <title>Anagrafe Ricambi</title>
+
     <link rel="stylesheet" href="style.css" media="screen">
 
     <script>
@@ -60,11 +62,12 @@ $action = $_GET['action'];
       enctype="multipart/form-data">
 
 
-    <? if (isset($error_message)): ?>
-         <input type="button" class="error button-error" value=" <?php echo $error_message ?>" onclick="restart()"></input>
-    <? else: ?>
-        <input class="button" type="submit" value="Conferma <?php echo $action ?>" name="submit">
-    <? endif; ?>
+    <?php if ($error_message != null ){
+      echo"<input type='button' class='error button-error' value='$error_message' onclick='restart()'>";
+   } else{
+        echo " <input class='button' type='submit' value='Conferma $action' name='submit'>";
+        };
+    ?>
 
 
 </form>

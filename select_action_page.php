@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Anagrafe Ricambi</title>
     <link rel="stylesheet" href="style.css" media="screen">
 
     <script>
