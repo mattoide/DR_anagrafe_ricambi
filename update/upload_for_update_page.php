@@ -12,7 +12,7 @@
 
     <script>
         function restart() {
-            window.location.href = "../select_action_page.php";
+            window.location.href = "../index.php";
         }
 
     </script>
