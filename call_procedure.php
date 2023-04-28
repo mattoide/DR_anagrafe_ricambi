@@ -5,10 +5,13 @@ require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+
 $error_message = null;
 $success_message = null;
 $proc_params = $_SESSION["proc_params"];
 
+$procedure_inserimento = "Exec SPDR_InsUpdtIserviceWithAlias ";
+$procedure_aggiornamento_desc = "Exec SPDR_InsUpdtArtIservice 0, ";
 
 if (!isset($_POST["submit"])) {
 
@@ -56,6 +59,18 @@ if (!isset($_POST["submit"])) {
 
 if (isset($_POST["submit"])) {
 
+    $action = $_SESSION["action"];
+    $procedure = "";
+
+    if($action === "inserimento"){
+        $procedure = $procedure_inserimento;
+    } elseif ($action === "aggiornamento"){
+        $procedure = $procedure_aggiornamento_desc;
+    } else {
+        die( "<h1>Errore</h1>");
+    }
+
+
     $serverName = "localhost\\sqlexpress, 1433"; //serverName\instanceName
     $connectionInfo = array("Database" => "DRMOTOR", "UID" => "SA", "PWD" => "<YourStrong@Passw0rd>", "TrustServerCertificate" => true);
     $conn = sqlsrv_connect($serverName, $connectionInfo);
@@ -81,7 +96,8 @@ if (isset($_POST["submit"])) {
                 $params[$j] = "'" . $params[$j] . "'";
             }
 
-            $sql = "Exec SPDR_InsUpdtIserviceWithAlias " . join(", ", $params) ;
+            $sql = $procedure . join(", ", $params) ;
+
 
 
             $stmt = sqlsrv_query($conn, $sql);

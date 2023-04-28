@@ -17,6 +17,8 @@
 <?php
 include "call_procedure.php";
 $action = $_GET['action'];
+$_SESSION["action"]  = $action;
+
 ?>
 
 
