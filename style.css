@@ -61,6 +61,18 @@
     cursor: pointer;
 }
 
+.button-success {
+    background-color: green;
+    border: green solid 1px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .button-home {
     background-color: #eeff94;
     /*border: red solid 1px;*/
@@ -86,6 +98,28 @@
 
 .error {color: #FF0000;}
 
+.cell-error{
+    background: red;
+}
+
+.row-error{
+    background: yellow;
+}
+
+.success {
+    color: white;
+}
+
+.label {
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*color: white;*/
+    background: #eeff94;
+    margin: 1%;
+}
 .title{
     color: green;
         padding: 0.5rem;

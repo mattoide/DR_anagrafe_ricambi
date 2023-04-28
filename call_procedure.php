@@ -6,6 +6,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $error_message = null;
+$success_message = null;
 $proc_params = $_SESSION["proc_params"];
 
 
@@ -55,23 +56,47 @@ if (!isset($_POST["submit"])) {
 
 if (isset($_POST["submit"])) {
 
+    $serverName = "localhost\\sqlexpress, 1433"; //serverName\instanceName
+    $connectionInfo = array("Database" => "DRMOTOR", "UID" => "SA", "PWD" => "<YourStrong@Passw0rd>", "TrustServerCertificate" => true);
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+    if ($conn) {
+//        echo "Connection established.<br />";
+//        var_dump($conn);
+    } else {
+        echo "Connection could not be established.<br />";
+        die(print_r(sqlsrv_errors(), true));
+    }
+
     $proc_params = $_SESSION["proc_params"];
 
+    try {
+
+
         for ($i = 0; $i < count($proc_params); ++$i) {
-//        var_dump($proc_params[$i-1]);
 
             $params = explode("%--%", $proc_params[$i]);
 
             for ($j = 0; $j < count($params); ++$j) {
-                //TODO: chiamare procedura
-
-                var_dump($params[$j]);
-                echo '<br>';
+                $params[$j] = "'" . $params[$j] . "'";
             }
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
+
+            $sql = "Exec SPDR_InsUpdtIserviceWithAlias " . join(", ", $params) ;
+
+
+            $stmt = sqlsrv_query($conn, $sql);
+
+
+           // var_dump(sqlsrv_fetch_object($stmt));
+
 
         }
 
+        $success_message = "Inserimento avvenuto con successo";
+//        var_dump($success_message);
+
+    } catch (Exception $e){
+        var_dump("Errore nell inserimento");
+        die();
+    }
 }
